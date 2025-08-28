@@ -22,6 +22,15 @@ function Header() {
   );
 }
 
+function CoreComponent(props) {
+  return (
+    <li>
+      <img src={props.image} alt={props.title} />
+      <h3>{props.title}</h3>
+      <p>{props.description}</p>
+    </li>
+  );
+}
 
 // app renderer component
 function App() {
@@ -29,7 +38,12 @@ function App() {
     <div>
       <Header />
       <main>
-        <h2>Time to get started!</h2>
+        <section id="core-concepts">
+          <h2>Time to get started!</h2>
+          <ul>
+            <CoreComponent title="JS" image={reactImg} description={ } />
+          </ul>
+        </section>
       </main>
     </div>
   );
