@@ -9,12 +9,8 @@ function TabButton({ children, onSelect }) {
     );
 }
 
-function TabComponent(props) {
-    const handleClick = function (e) {
-        console.log(e.target.textContent);
-    };
-
-    const tabButtons = btnLabels.map((label) => <TabButton onSelect={handleClick}>{label}</TabButton>);
+function TabComponent({ onSelect }) {
+    const tabButtons = btnLabels.map((label) => <TabButton onSelect={onSelect}>{label}</TabButton>);
     return (<>
         {tabButtons}
     </>);
