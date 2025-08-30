@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
-import { CoreConcept, Header, TabComponent, TabContent } from './components';
-import { CORE_CONCEPTS as coreConcepts } from './config/data';
+import { CoreConcept, Header, TabButton, TabContent } from './components';
+import { CORE_CONCEPTS as coreConcepts, BUTTON_LABELS as btnLabels } from './config/data';
 
 const getCoreConcepts = function () {
-  return coreConcepts.map((concept) =>
+  return coreConcepts.map((concept, ind) =>
     // <CoreComponent title={concept.title} image={concept.image} description={concept.description} />
-    <CoreConcept {...concept} /> // to be used when passing a single object as prop
+    <CoreConcept key={ind} {...concept} /> // to be used when passing a single object as prop
     // <CoreComponent concept={...concept} /> // this also works, but again concept will be packed into an object, which is why the above line makes lot more sense to use
   );
   retur;
@@ -16,8 +16,14 @@ const getCoreConcepts = function () {
 function App() {
   const [tabContent, setTabContent] = useState('');
 
+  const getTabComponent = function () {
+    return btnLabels.map((label, ind) =>
+      <TabButton key={ind} isSelected={tabContent === label} onSelect={handleClick}>{label}</TabButton>);
+  };
+
   const handleClick = function (e) {
     setTabContent(e.target.textContent);
+
   };
 
 
@@ -39,13 +45,19 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabComponent onSelect={handleClick} />
+            {/* <TabComponent onSelect={handleClick} /> */}
+            {/* <TabButton isSelected={tabContent === 'Components'} onSelect={handleClick}>Components</TabButton>
+            <TabButton isSelected={tabContent === 'JSX'} onSelect={handleClick}>JSX</TabButton>
+            <TabButton isSelected={tabContent === 'Props'} onSelect={handleClick}>Props</TabButton>
+            <TabButton isSelected={tabContent === 'State'} onSelect={handleClick}>State</TabButton> */}
+            {getTabComponent()}
           </menu>
           {/* {tab} */}
-          {tabContent &&
+          {tabContent ?
             <div id="tab-content">
               <TabContent data={tabContent} />
             </div>
+            : <p>Please Select a topic.</p>
           }
         </section>
       </main>
