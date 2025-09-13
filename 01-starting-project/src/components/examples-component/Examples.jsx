@@ -12,7 +12,7 @@ const Examples = function () {
 
     const getTabButtons = function () {
         return btnLabels.map((label, ind) =>
-            <TabButton key={ind} isSelected={tabContent === label} onSelect={handleClick}>{label}</TabButton>);
+            <TabButton key={ind} isSelected={tabContent === label} onClick={handleClick}>{label}</TabButton>);
     };
 
     return (
