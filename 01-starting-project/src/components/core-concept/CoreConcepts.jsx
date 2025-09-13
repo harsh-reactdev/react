@@ -1,4 +1,4 @@
-import CoreConcept from './CoreConcept';
+import { CoreConcept, Section } from '../../components';
 import { CORE_CONCEPTS as coreConcepts } from '../../config/data';
 
 const getCoreConcepts = function () {
@@ -11,8 +11,8 @@ const getCoreConcepts = function () {
 
 const CoreConcepts = function () {
     return (
-        <section id="core-concepts">
-            <h2>Time to get started!</h2>
+        <Section title="Time to get started!" id="core-concepts">
+            {/* <h2>Time to get started!</h2> */}
             <ul>
                 {/* <CoreComponent title="React Components" image={reactImg} description="The core UI building block" />
             <CoreComponent title="React Components" image={reactImg} description="The core UI building block" />
@@ -20,7 +20,7 @@ const CoreConcepts = function () {
             <CoreComponent title="React Components" image={reactImg} description="The core UI building block" /> */}
                 {getCoreConcepts()}
             </ul>
-        </section>
+        </Section>
     );
 };
 
